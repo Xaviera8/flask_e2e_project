@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the MyFitnessPal Dupe</title>
+</head>
+
+<body class="bg-gray-200">
+
+    <header class="bg-red-600 text-white p-4">
+        <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1>
+        <p>This is a flask application that will mimic some functions inside of MyFitnessPal</p>
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="/" class="hover:underline">Home</a></li>
+                <li><a href="/data" class="hover:underline">Step Tracker</a></li>
+                <li><a href="/food" class="hover:underline">Food Diary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="p-4">
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+    <footer class="bg-red-600 text-white p-4 mt-6">
+        <p>© 2023 My Healthcare App. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
