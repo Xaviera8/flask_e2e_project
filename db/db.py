@@ -31,25 +31,7 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-fake = Faker()
-
-# Function to generate fake patient data
-def create_fake_patient():
-    return Test(
-        id=random.randint(1, 10),
-        weight=random.randint(1, 10)
-    )
-
-# Generate and insert fake data
-for _ in range(5):  # Adjust the number of records you want to generate
-    fake_patient = create_fake_patient()
-    session.add(fake_patient)
-    try:
-        session.commit()
-    except Exception as e:
-        print(f"Error inserting data: {e}")
-        session.rollback()  # Rollback the transaction in case of an error
-
+session.commit()
 # Close the session
 session.close()
 

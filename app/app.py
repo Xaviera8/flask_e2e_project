@@ -3,18 +3,38 @@ import os
 from dotenv import load_dotenv
 from pandas import read_sql
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine, text, engine
+from sqlalchemy import create_engine, text, engine, Column, Integer
+from sqlalchemy.ext.declarative import declarative_base
 import pandas as pd
+import matplotlib
 
+import sentry_sdk
 
+# This will initalize the Sentry SDK with your specific configuration
+sentry_sdk.init(
+    dsn="https://03b73b565605f5019972700e04e309f5@o4506409273458688.ingest.sentry.io/4506409279684608",
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+)
  # Load environment variables from .env file
 load_dotenv() 
 
 # Database connection settings from environment variables
 db_url = os.getenv('db_url')
 
-gcp_engine = db_url
-engine = create_engine(gcp_engine)
+
+engine = create_engine(db_url)
+
+Base = declarative_base()
+
+# Define the Test class corresponding to the 'test' table
+class Test(Base):
+    __tablename__ = 'test'
+    id = Column(Integer, primary_key=True)
+    weight = Column(Integer)
+
+# Create the 'test' table if it doesn't exist
+Base.metadata.create_all(engine)
 
 
 
@@ -28,8 +48,10 @@ def show_table():
         query1 = text('SELECT * FROM test')
         result1 = connection.execute(query1)
         # Fetch all rows of data
-        patientdata = result1.fetchall()
-        return patientdata
+        user_weight = result1.fetchall()
+        return user_weight
+
+
 
 
 @app.route('/')
@@ -44,31 +66,37 @@ def weight():
 
 @app.route('/weight_results')
 def weight_results():
-    patientdata = show_table()
-    return render_template('weight_results.html', data1=patientdata)
+    user_weight = show_table()
+    return render_template('weight_results.html', data1=user_weight)
 
 @app.route('/add_data', methods=['POST'])
 def add_data():
-    if request.method == 'POST':
-        # Extract form data
-        id_value = request.form.get('id')
-        weight_value = request.form.get('weight')
+    id_value = request.form.get('id')
+    weight_value = request.form.get('weight')
+    # Create a new Test instance with the form data
+    new_value = Test(id=id_value, weight=weight_value)
 
-        # Execute SQL INSERT statement
-        with engine.connect() as connection:
-            query_insert = text('INSERT INTO test (id, weight) VALUES (:id, :weight)')
-            connection.execute(query_insert, {"id": id_value, "weight": weight_value})
-
-        # Redirect to the /food route to see the updated data
-        return redirect(url_for('food'))
-    else:
-        # Handle other HTTP methods if needed
-        return redirect(url_for('food'))
-
+    # Create a session and add the new_test instance to the session
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    try:
+        session.add(new_value)
+        # Commit the changes to the database
+        session.commit()
+        # Close the session
+        session.close()
+        # Redirect to a success page or another route
+        return redirect(url_for('weight_results'))
+    except Exception as e:
+        raise Exception (f'something went wrong:{e}')
+        return render_template(url_for('weight_error'))
 
 if __name__ == '__main__':
     app.run(
         debug=True,
         port=8080
     )
+
+
+
 

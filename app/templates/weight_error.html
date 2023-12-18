@@ -41,10 +41,12 @@
     }
     </style>
 </head>
+
 <body class="bg-gray-200">
 
-    <header>
-        <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1><br>
+    <header class="bg-blue-600 text-white p-4">
+        <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1>
+        <p>This is a Flask application that will mimic some functions inside of MyFitnessPal</p>
         <nav>
             <ul class="flex space-x-4">
                 <li><a href="/home" class="hover:underline">Home</a></li>
@@ -54,25 +56,18 @@
         </nav>
     </header>
 
-<body>
-    <div class="p-4">
-        <h2 class="text-xl font-bold mb-4">Food Data</h2>
+    <body class="bg-gray-200 flex items-center justify-center h-screen">
+        <form action="/add_data" method="post">
 
-        <table class="table-auto">
-            <thead>
-                <tr>
-                    <th class="px-4 py-2">ID #</th>
-                    <th class="px-4 py-2">Weight</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in data1 %}
-                <tr>
-                    <td class="border px-4 py-2">{{row.id}}</td>
-                    <td class="border px-4 py-2">{{row.weight}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            <label for="id">Please Enter Your ID:</label><br>
+            <input type="text" id="id" name="id" required><br>
+    
+            <label for="weight">Please Enter Your Current Weight:</label><br>
+            <input type="text" id="weight" name="weight" required><br>
+            <p class="text-red-500">We were unable to log your weight. Please try again.</p>
+            
+            <input type="submit" value="Submit"  class="bg-blue-500 text-white py-2 px-4 rounded">
+        </form>
+    </body>
+
 </html>

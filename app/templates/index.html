@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>MyFitnessBuddy</title>
+    <link rel="icon" href="https://image.similarpng.com/very-thumbnail/2022/01/Medical-health-logo-design-on-transparent-background-PNG.png" type="image/png">
     <!-- Include Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #edf2f7a3;
+            margin: 0;
+        }
+
+        header {
+            background-color: #008cff;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 2rem auto; /* Adjust top margin as needed */
+        width: 300px; /* Set a fixed width or adjust as needed */
+    }
+
+    form label,
+    form input {
+        margin-bottom: 1rem;
+    }
+    </style>
 </head>
 
 
 <body class="bg-gray-200">
 
-    <header class="bg-blue-600 text-white p-4">
-        <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1>
-        <p>This is a flask application that will mimic some functions inside of MyFitnessPal</p>
+    <header>
+        <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1><br>
         <nav>
             <ul class="flex space-x-4">
-                <li><a href="/" class="hover:underline">Home</a></li>
+                <li><a href="/home" class="hover:underline">Home</a></li>
                 <li><a href="/weight" class="hover:underline">Weight Tracker</a></li>
                 <li><a href="/weight_results" class="hover:underline">Weight Results</a></li>
             </ul>
         </nav>
     </header>
 
+
     <main class="p-4">
+        <p class="text-2xl">This is a flask application that will mimic some functions inside of MyFitnessPal</p>        
 
         {% block content %}
 
@@ -34,9 +66,7 @@
 
     </main>
 
-    <footer class="bg-blue-600 text-white p-4 mt-6">
-        <p>© 2023 My Healthcare App. All Rights Reserved.</p>
-    </footer>
+
 </body>
 
 </html>
