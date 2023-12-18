@@ -42,32 +42,30 @@
     </style>
 </head>
 
-<body class="bg-gray-200">
+<body>
 
-    <header class="bg-blue-600 text-white p-4">
-        <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1>
-        <p>This is a Flask application that will mimic some functions inside of MyFitnessPal</p>
+    <header>
+        <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1><br>
         <nav>
             <ul class="flex space-x-4">
-                <li><a href="/home" class="hover:underline">Home</a></li>
+                <li><a href="/dashboard" class="hover:underline">Home</a></li>
                 <li><a href="/weight" class="hover:underline">Weight Tracker</a></li>
                 <li><a href="/weight_results" class="hover:underline">Weight Results</a></li>
             </ul>
         </nav>
     </header>
 
-    <body class="bg-gray-200 flex items-center justify-center h-screen">
-        <form action="/add_data" method="post">
+    <form action="/add_data" method="post">
+        <label for="id">Please Enter Your ID:</label><br>
+        <input type="text" id="id" name="id" required class="mb-4"><br>
 
-            <label for="id">Please Enter Your ID:</label><br>
-            <input type="text" id="id" name="id" required><br>
-    
-            <label for="weight">Please Enter Your Current Weight:</label><br>
-            <input type="text" id="weight" name="weight" required><br>
-            <p class="text-red-500">We were unable to log your weight. Please try again.</p>
-            
-            <input type="submit" value="Submit"  class="bg-blue-500 text-white py-2 px-4 rounded">
-        </form>
-    </body>
+        <label for="weight">Enter Your Current Weight in lbs:</label><br>
+        <input type="text" id="weight" name="weight" required class="mb-4"><br>
+        <p class="text-red-500">We were unable to log your weight. Please try again.</p>
+
+        <input type="submit" value="Submit" class="bg-blue-500 text-white py-2 px-4 rounded">
+    </form>
+
+</body>
 
 </html>

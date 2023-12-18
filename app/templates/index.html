@@ -12,6 +12,7 @@
         body {
             background-color: #edf2f7a3;
             margin: 0;
+            text-align: center;
         }
 
         header {
@@ -27,21 +28,20 @@
         }
 
         form {
-        justify-content: center;
-        padding: 1.5rem;
-        border-radius: 0.375rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin: 2rem auto; /* Adjust top margin as needed */
-        width: 300px; /* Set a fixed width or adjust as needed */
-    }
+            justify-content: center;
+            padding: 1.5rem;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto; /* Adjust top margin as needed */
+            width: 300px; /* Set a fixed width or adjust as needed */
+        }
 
-    form label,
-    form input {
-        margin-bottom: 1rem;
-    }
+        form label,
+        form input {
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
-
 
 <body class="bg-gray-200">
 
@@ -49,23 +49,44 @@
         <h1 class="text-2xl">Welcome to MyFitnessBuddy</h1><br>
         <nav>
             <ul class="flex space-x-4">
-                <li><a href="/home" class="hover:underline">Home</a></li>
+                <li><a href="/dashboard" class="hover:underline">Home</a></li>
                 <li><a href="/weight" class="hover:underline">Weight Tracker</a></li>
                 <li><a href="/weight_results" class="hover:underline">Weight Results</a></li>
             </ul>
         </nav>
     </header>
 
-
     <main class="p-4">
-        <p class="text-2xl">This is a flask application that will mimic some functions inside of MyFitnessPal</p>        
+        <p class="text-2xl">Welcome, {{user.name}}!</p>
+        <div>
+            <p class="flex justify-center items-center mt-4"> <img src="{{ user.picture }}" alt="Profile Picture" style="width:75px;height:75px;"> </p>
+        </div>
+        <br>
+        <p class="text-xl">Click here to log your weight</p>
+        
+        <div class="flex justify-center items-center mt-4">
+            <a href="/weight" class="logout-btn bg-blue-500 text-white py-2 px-5 rounded" style="text-decoration:none;">
+                <div class="btn-text">
+                    Add Weight
+                </div>
+            </a>
+        </div>
 
         {% block content %}
-
         {% endblock %}
 
     </main>
-
+    <br>
+    <p class="text-xl">Click here to log out</p>
+    <main style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+        <div class="flex justify-center items-center mt-4">
+            <a href="/logout" class="logout-btn bg-red-500 text-white py-2 px-4 rounded" style="text-decoration:none;">
+                <div class="btn-text">
+                    Logout
+                </div>
+            </a>
+        </div>
+    </main>
 
 </body>
 
