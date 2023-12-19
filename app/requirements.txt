@@ -1,0 +1,12 @@
+flask
+pandas
+sqlalchemy
+pymysql
+faker
+python-dotenv
+authlib
+oauth2client
+oauthlib
+Jinja2
+requests
+sentry-sdk

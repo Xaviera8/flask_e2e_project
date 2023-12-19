@@ -9,11 +9,32 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
     <title>Flask app</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Add the following styles for centering the logout button */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .logout-btn {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn-text {
+            margin-top: 10px; /* Adjust this value based on your preference */
+        }
+    </style>
 </head>
 <body>
     <div>
         <a href="google/" class="login-btn" style="text-decoration:none;">
-            <img id="google" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
+            <img id="google" src="https://pbs.twimg.com/profile_images/1605297940242669568/q8-vPggS_400x400.jpg"
         alt="Google"
         style="width:50px;height:50px;">
         <div class="btn-text">
