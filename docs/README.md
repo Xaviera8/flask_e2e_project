@@ -58,7 +58,7 @@ GOOGLE_CLIENT_SECRET = 'secret'
 I primarily had issues with the docker image and deployment.
 
 ### Docker
-Docker image was built but not ran succesfully due to docker not detecting MYSQL despite it being in requirement.txt
+Docker image was built but not ran succesfully due to docker not detecting MYSQL despite it being in requirements.txt
 ![image](https://github.com/Xaviera8/flask_e2e_project/assets/141374145/071a3c25-303c-4eee-a6d6-3294536d2bf1)
 ![image](https://github.com/Xaviera8/flask_e2e_project/assets/141374145/cee20eee-f91a-4ec8-b2c8-367f754ad1c3)
 ![image](https://github.com/Xaviera8/flask_e2e_project/assets/141374145/e4b18546-057c-4018-b479-0edf7bb871f7)
