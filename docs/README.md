@@ -46,13 +46,13 @@ The final step to deploy your flask application is to enter the following comman
 
 
 ## .ENV File Structure        
-database = 
-user = 
-password = 
-host = 
-db_url = 
-GOOGLE_CLIENT_ID = 
-GOOGLE_CLIENT_SECRET = 
+database = 'database'
+user = 'user'
+password = 'password'
+host = 'host'
+db_url = 'url'
+GOOGLE_CLIENT_ID = 'id'
+GOOGLE_CLIENT_SECRET = 'secret'
 
 ## Errors
 I primarily had issues with the docker image and deployment.
@@ -65,7 +65,7 @@ Docker image was built but not ran succesfully due to docker not detecting MYSQL
 ![image](https://github.com/Xaviera8/flask_e2e_project/assets/141374145/6e6a2819-f53b-4f10-9ee0-3d8d08371ec4)
 
 ### Deployment
-I was able to log in to the AZ and set my subsriction and run the command. az webapp up --resource-group nimbus --name jcwp --runtime PYTHON:3.9 --sku B1. When the process finished the application kept returning this error. Despite the webservie working locally, I could not figure out how to resolve this issue. 
+I was able to log in to the AZ and set my subsription and run the command. az webapp up --resource-group nimbus --name jcwp --runtime PYTHON:3.9 --sku B1. When the process finished the application kept returning this error. Despite the webservie working locally, I could not figure out how to resolve this issue. 
 ![image](https://github.com/Xaviera8/flask_e2e_project/assets/141374145/86d6a303-f5e8-4868-bcea-eecaf2d5857b)
 ![image](https://github.com/Xaviera8/flask_e2e_project/assets/141374145/9bc3334c-3dbf-4b70-918b-bbf36712d100)
 
