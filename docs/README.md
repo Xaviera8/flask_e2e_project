@@ -54,6 +54,7 @@ db_url = 'url'
 GOOGLE_CLIENT_ID = 'id'
 GOOGLE_CLIENT_SECRET = 'secret'
 
+<!--
 ## Errors
 I primarily had issues with the docker image and deployment.
 
